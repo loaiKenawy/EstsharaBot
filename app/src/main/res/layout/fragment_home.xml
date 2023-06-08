@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/home_fragment"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".ui.fragments.HomeFragment"
+    tools:viewBindingIgnore="false">
+
+    <ImageView
+        android:id="@+id/iv_top_shape"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/ic_top_shape"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_hello"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="15dp"
+        android:padding="5dp"
+        android:text="Hello,"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_user_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:text="Loai Kenawy"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_hello" />
+
+    <ImageView
+        android:id="@+id/iv_bottom_shape"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/ic_bottom_shape"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/chat_shape"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/shape_home_chat"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iv_top_shape">
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="20dp"
+            android:text="Do you feel alright?"
+            android:textColor="@color/white"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintLeft_toLeftOf="@+id/chat_shape"
+            app:layout_constraintRight_toRightOf="@+id/chat_shape"
+            app:layout_constraintTop_toTopOf="@+id/chat_shape" />
+
+
+        <TextView
+            android:id="@+id/btn_chat_now"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/main_btn_selector"
+            android:padding="20dp"
+            android:text="Let's Chat"
+            android:textColor="@color/new_dark"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView3" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <TextView
+        android:id="@+id/tv_more_options"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/shape_label"
+        android:padding="10dp"
+        android:text="More Options?"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/chat_shape" />
+
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/barrier_vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/iv_bottom_shape"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_more_options" />
+
+    <Button
+        android:id="@+id/btn_profile"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="35dp"
+        android:layout_marginEnd="10dp"
+        android:background="@drawable/main_btn_selector"
+        android:drawableStart="@drawable/ic_profile_"
+        android:drawablePadding="20dp"
+        android:drawableTint="@color/new_dark"
+        android:padding="25dp"
+        android:text="@string/my_profile"
+        android:textAlignment="textStart"
+        android:textAllCaps="false"
+        android:textColor="@color/new_dark"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toStartOf="@+id/barrier_vertical"
+        app:layout_constraintStart_toStartOf="@+id/tv_more_options"
+        app:layout_constraintTop_toBottomOf="@+id/tv_more_options" />
+
+    <Button
+        android:id="@+id/btn_chat_history"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="35dp"
+        android:background="@drawable/main_btn_selector"
+        android:drawableStart="@drawable/ic_chat_history"
+        android:drawablePadding="20dp"
+        android:drawableTint="@color/new_dark"
+        android:padding="25dp"
+        android:text="@string/chat_history"
+        android:textAlignment="textStart"
+        android:textAllCaps="false"
+        android:textColor="@color/new_dark"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@+id/tv_more_options"
+        app:layout_constraintStart_toEndOf="@+id/barrier_vertical"
+        app:layout_constraintTop_toBottomOf="@+id/tv_more_options" />
+
+    <Button
+
+        android:id="@+id/button2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="35dp"
+        android:layout_marginEnd="10dp"
+        android:background="@drawable/main_btn_selector"
+        android:drawableStart="@drawable/ic_report_history"
+        android:drawablePadding="20dp"
+        android:drawableTint="@color/new_dark"
+        android:padding="25dp"
+        android:text="@string/report_history"
+        android:textAlignment="textStart"
+        android:textAllCaps="false"
+        android:textColor="@color/new_dark"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toStartOf="@+id/barrier_vertical"
+        app:layout_constraintStart_toStartOf="@+id/tv_more_options"
+        app:layout_constraintTop_toBottomOf="@+id/btn_profile" />
+
+    <Button
+        android:id="@+id/btn_upload"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="35dp"
+        android:background="@drawable/main_btn_selector"
+        android:drawableStart="@drawable/ic_upload_btn"
+        android:drawablePadding="20dp"
+        android:drawableTint="@color/new_dark"
+        android:padding="25dp"
+        android:text="@string/upload_image"
+        android:textAlignment="textStart"
+        android:textAllCaps="false"
+        android:textColor="@color/new_dark"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@+id/tv_more_options"
+        app:layout_constraintStart_toEndOf="@+id/barrier_vertical"
+        app:layout_constraintTop_toBottomOf="@+id/btn_chat_history" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
