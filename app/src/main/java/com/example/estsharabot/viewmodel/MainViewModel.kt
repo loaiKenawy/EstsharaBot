@@ -52,33 +52,7 @@ class MainViewModel(private val apiRepo: RemoteRepo) : ViewModel() {
         return report
     }
 
-    suspend fun postMessage(message: Message, lifecycleOwner: LifecycleOwner): BotResponse {
 
-        val botResponse : MutableLiveData<BotResponse> = MutableLiveData()
-        val mResponse = BotResponse("Failed", "Failed")
-
-        var text = "..."
-
-        viewModelScope.launch {
-            val response = apiRepo.postMessage(message)
-            botResponse.value = response
-            botResponse.observe(lifecycleOwner, Observer {
-                if (it.recipent != null){
-                    mResponse.recipent = it.recipent
-                }else{
-                    mResponse.recipent = "Done"
-                }
-                mResponse.text = it.text
-            })
-            text = "Done"
-        }
-
-        while (text == "..."){
-            delay(100)
-        }
-        text = "..."
-        return mResponse
-    }
 
 
 }

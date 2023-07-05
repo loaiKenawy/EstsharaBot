@@ -1,5 +1,5 @@
 package com.example.estsharabot.model
 
 class BotResponse(
-    var recipent : String, var text: String) {
+    var recipient_id : String, var text: String) {
 }

@@ -42,19 +42,18 @@ class RemoteRepo(private val service: ApiMethods? = null) {
             Log.d(TAG, "receive: ${res[0].text}")
             res[0]
         } catch (e: Exception) {
+            Log.i(TAG, "URL : ${Constants.BASE_URL}")
             Log.e(TAG, "Can't Post message : ${e.message}")
             BotResponse("Failed", "Failed")
         }
     }
 
-    fun registerNewUser(newUser: User ,email:String , password:String): Int {
+    fun registerNewUser(newUser: User, email: String, password: String): Int {
         var successFlag = -1
-
         try {
-
             auth = Firebase.auth
-            auth.createUserWithEmailAndPassword(email , password).addOnCompleteListener() { task ->
-                if (task.isSuccessful){
+            auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener() { task ->
+                if (task.isSuccessful) {
                     Log.d(TAG, "createUserWithEmail:success")
                     val user = auth.currentUser
 
@@ -63,7 +62,7 @@ class RemoteRepo(private val service: ApiMethods? = null) {
                     Log.d(TAG, "New User Registered Successfully")
                     successFlag = Constants.SUCCESS_VALUE
 
-                }else{
+                } else {
                     Log.w(TAG, "createUserWithEmail:failure", task.exception)
                     successFlag = Constants.FAILED_VALUE
                 }

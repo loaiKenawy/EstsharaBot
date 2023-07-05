@@ -1,6 +1,5 @@
 package com.example.estsharabot.ui.fragments
 
-import android.Manifest
 import android.app.Activity.RESULT_OK
 import android.content.Intent
 import android.net.Uri
@@ -11,7 +10,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import coil.load
@@ -47,27 +45,6 @@ class UploadImageFragment : Fragment() {
 
     private lateinit var viewModel: MainViewModel
 
-    private val getContent =
-        registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
-            // Handle the returned Uri
-            if (uri != null) {
-                Log.d("PhotoPicker", "Selected URI: $uri")
-                binding.btnUpload.visibility = View.INVISIBLE
-                binding.ivImageContainer.load(uri) {
-                    crossfade(true)
-                    crossfade(100)
-                    transformations(RoundedCornersTransformation(50f))
-                    GlobalScope.launch(Dispatchers.IO) {
-                        uploadFile(uri)
-                    }
-                }
-            } else {
-                Toast.makeText(context, "Error while selecting the image", Toast.LENGTH_LONG).show()
-            }
-        }
-
-
-
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -81,17 +58,9 @@ class UploadImageFragment : Fragment() {
 
         binding.btnUpload.setOnClickListener {
             Constants.BASE_URL = getAPI()
-           // try {
-           //     getContent.launch("image/*")
-//
-//
-           // } catch (e: Exception) {
-           //     Log.e("PhotoPicker", "Error ${e.message}")
-           // }
 
             val gallery = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI)
             startActivityForResult(gallery, pickImage)
-
         }
         return view
     }
@@ -191,7 +160,6 @@ class UploadImageFragment : Fragment() {
 
 
     }
-
 
     @Deprecated("Deprecated in Java")
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

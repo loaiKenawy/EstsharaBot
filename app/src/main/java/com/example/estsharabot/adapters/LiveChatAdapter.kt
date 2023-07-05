@@ -3,13 +3,8 @@ package com.example.estsharabot.adapters
 import android.content.Context
 import android.util.Log
 import android.view.LayoutInflater
-import android.view.TextureView
-import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.estsharabot.R
-import com.example.estsharabot.databinding.FragmentChatBinding
 import com.example.estsharabot.databinding.LayoutReceiveBinding
 import com.example.estsharabot.databinding.LayoutSendBinding
 import com.example.estsharabot.model.Message
@@ -23,17 +18,12 @@ class LiveChatAdapter(private val context: Context, private val messageList: Arr
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        if (viewType == 1) {
+        return if (viewType == 1) {
             // inflate receive
-            //val view: View =
-            //    LayoutInflater.from(context).inflate(R.layout.layout_receive, parent, false)
-
-            return ReceiveViewHolder(LayoutReceiveBinding.inflate(LayoutInflater.from(parent.context),parent,false))
+            ReceiveViewHolder(LayoutReceiveBinding.inflate(LayoutInflater.from(parent.context),parent,false))
         } else {
             // inflate sent
-            val view: View =
-                LayoutInflater.from(context).inflate(R.layout.layout_send, parent, false)
-            return SentViewHolder(LayoutSendBinding.inflate(LayoutInflater.from(parent.context),parent,false))
+            SentViewHolder(LayoutSendBinding.inflate(LayoutInflater.from(parent.context),parent,false))
         }
     }
 
@@ -65,7 +55,7 @@ class LiveChatAdapter(private val context: Context, private val messageList: Arr
 
     override fun getItemViewType(position: Int): Int {
         val currentMessage = messageList[position]
-        return if (currentMessage.user) {
+        return if (currentMessage.isUser) {
             ITEM_SENT
         } else {
             ITEM_RECEIVE

@@ -38,6 +38,9 @@ class HomeFragment : Fragment() {
         binding.btnProfile.setOnClickListener {
             view.findNavController().navigate(R.id.action_homeFragment_to_profileFragment)
         }
+        binding.btnRecentReports.setOnClickListener{
+            view.findNavController().navigate(R.id.action_homeFragment_to_reportsFragment)
+        }
         return view
     }
 

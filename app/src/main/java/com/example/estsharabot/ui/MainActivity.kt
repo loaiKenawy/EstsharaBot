@@ -18,14 +18,13 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
         GlobalScope.launch(Dispatchers.Main) {
             navigate()
         }
     }
 
     private suspend fun navigate() {
-        delay(2500)
+        delay(1500)
         startActivity(Intent(this, HomeActivity::class.java))
         finish()
     }
